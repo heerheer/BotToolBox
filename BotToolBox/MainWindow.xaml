@@ -1,0 +1,49 @@
+﻿<Window
+    x:Class="BotToolBox.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:BotToolBox"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:pages="clr-namespace:BotToolBox.Views"
+    xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+    Title="BotToolBox - UI by WPF-UI"
+    Width="1200"
+    Height="654"
+    d:DesignHeight="650"
+    d:DesignWidth="900"
+    Background="{DynamicResource ApplicationBackgroundBrush}"
+    mc:Ignorable="d">
+    <Grid Margin="8">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <ui:NavigationStore Frame="{Binding ElementName=RouterView}" SelectedPageIndex="0">
+            <ui:NavigationStore.Items>
+                <ui:NavigationItem
+                    Content="Chat"
+                    Icon="Chat24"
+                    PageTag="chatpage"
+                    PageType="{x:Type pages:PageChat}" />
+                <ui:NavigationItem
+                    Content="测试"
+                    Icon="DeveloperBoardLightning20"
+                    PageTag="testpage"
+                    PageType="{x:Type pages:PageTest}" />
+
+            </ui:NavigationStore.Items>
+            <ui:NavigationStore.Footer>
+                <ui:NavigationItem
+                    Content="设置"
+                    Icon="Settings24"
+                    PageTag="settingspage"
+                    PageType="{x:Type pages:PageSettings}" />
+            </ui:NavigationStore.Footer>
+        </ui:NavigationStore>
+        <Frame
+            x:Name="RouterView"
+            Grid.Column="1"
+            Margin="8,0,0,0" />
+    </Grid>
+</Window>
